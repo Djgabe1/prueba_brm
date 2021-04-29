@@ -8,7 +8,8 @@ exports.guardar = (req, res)=>{
     const apellido = req.body.apellido;
     const producto = req.body.producto;
     const cantidad = req.body.cantidad;
-    conexion.query('INSERT INTO clientes SET ?', {idCliente:idCliente, productos:producto, nombre:nombre, apellido:apellido,  cantidad:cantidad}, (error, results)=>{
+    const idProveedores = req.body.idProveedores;
+    conexion.query('INSERT INTO clientes SET ?', {idCliente:idCliente, productos:producto, nombre:nombre, apellido:apellido,  cantidad:cantidad, idProveedores:idProveedores}, (error, results)=>{
         if (error)console.log(error);
         else{res.redirect('/shopping');}
     })

@@ -6,13 +6,65 @@ body{
     align-items: center;
     justify-content: center;
     margin: 70px 90px;
+    background: #333;
+}
+.title{
+    color: #fff;
+    font-size: 25px;
 }
 
-.input{
+label{
+    color: #fff;
+    font-size: 17px;
+}
+select{
+    display: block;
+    width: 90%;
+    padding: 6px;
+    margin: 12px 5% ;
+    box-sizing: border-box;
+    border: none;
+    background: #333;
+    border-bottom: 2px solid #666 ;
+    outline: none !important;
+    transition: background 0.6s;
+    color: rgb(27, 206, 146);
+}
+input{
     display: block;
     width: 90%;
     padding: 6px;
     margin: 12px 5%;
     box-sizing: border-box;
     border:none;
+    background: #999;
+    border-bottom: 2px solid #666 ;
+    background: transparent;
+    outline: none !important;
+    transition: background 0.6s;
+    color: rgb(27, 206, 146);
+}
+
+input:hover{
+    color: rgb(27, 206, 146);
+}
+
+input:hover::placeholder{
+    color: rgb(27, 206, 146);
+}
+
+.btn{
+    width: 30%;
+    margin-top: 20px;
+    padding: 14px;
+    font-weight: 800;
+    margin: 15px;
+    background: rgb(27, 206, 146);
+    color: #000;
+    transition: background 0.6s;
+    
+}
+
+.btn:hover{
+    background: rgb(146, 240, 230) ;
 }

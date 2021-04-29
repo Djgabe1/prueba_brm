@@ -17,11 +17,3 @@ body{
     margin: 6px;
     padding: 50px ;
 }
-.input{
-    display: block;
-    width: 90%;
-    padding: 6px;
-    margin: 12px 5%;
-    box-sizing: border-box;
-    border:none;
-}

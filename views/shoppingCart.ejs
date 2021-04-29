@@ -4,27 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sistema de inventariado</title>
+    <link rel="stylesheet" href="css/compras.css">
 </head>
 <body>
     <%- include ('navbar') _%>
     <div class="container">
-        <div class="titulo">
-            <h2>Carrito de compras</h2>
+        <div class="title">
+            <p>Carrito de compras</p>
         </div>
         <div class="formulario">
             <form action="/guardar" method="POST">
                     <div class="items">
                         <label for="idCliente">Numero de documento</label>
-                        <input type="text" id="idCliente" name="idCliente" class="id-cliente">
+                        <input type="text" id="idCliente" name="idCliente" class="id-cliente" placeholder="identificación ciudadana">
                     </div>
                     <div class="items">
                         <label for="nombre">Nombres</label>
-                        <input type="text" id="nombre" name="nombre" class="nombre">
+                        <input type="text" id="nombre" name="nombre" class="nombre" placeholder="Ejemplo: Juanito">
                     </div>
                     <div class="items">
                         <label for="apellido">Apellidos</label>
-                        <input type="text" id="apellido" name="apellido" class="apellido">
+                        <input type="text" id="apellido" name="apellido" class="apellido" placeholder="Ejemplo: perez">
                     </div>
                     <div class="items">
                         <label for="producto">Producto</label>
@@ -36,17 +37,49 @@
                         </select>
                     </div>
                     <div class="items">
-                        <label for="cantidad">Cantidad</label><br>
-                        <input type="text" id="cantidad" name="cantidad" >
+                        <label for="cantidad">Cantidad</label>
+                        <input type="text" id="cantidad" name="cantidad" placeholder="Cantidad de producto a comprar" >
                         
                     </div> 
-                    <button type="submit" class="comprar">Comprar </button>
-                    <button type="submit" class="cancelar">Cancelar </button>
-
+                    <div class="items">
+                        <label for="idProveedores">Seleciona el Producto para determinar el proveedor</label>
+                        <select name="idProveedores" id="idProveedores">
+                            <option value="seleciona"> Selecciona un producto</option>
+                            <% pro.forEach(op =>{ %>
+                                <option value="<%= op.idProveedores %>" <% pro.idProveedores ===  op ? 'selected' : '' %>> <%= op.productos %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn">Comprar </button>
+                    <button type="submit" class="btn">Cancelar </button>
             </form>
         </div>  
+    </div>
+    <div class="productos-selecionados">
+        <p>PRODUCTOS SELECCIONADOS</p>
+        <table class="table">
+            <thead>
+                <th>Cliente</th>
+                <th>PRODUCTO</th>
+                <th>CANTIDAD</th>
+                <th>PRECIO</th>
+                <th>COMPRAR</th>
+                <th>Cancelar</th>
+            </thead>
+            <tbody>
+                <% pro.forEach((cliente)=>{%>
+                    <tr>
+                        <td><%= cliente.idCliente %></td>
+                        <td><%= cliente.productos %></td>
+                        <td><%= cliente.cantidad %></td>
+                        <td><%= cliente.precio%></td>
+                        <td><a href="/eliminar/<%= cliente.idProveedores %>" ><i class='bx bx-check-double bx-sm'></i></a></td>
+                        <td><a href="/cancelar/<%= cliente.idCliente %>"><i class='bx bx-x bx-sm'></i></a></td>
+                </tr>
+                    <%})%>
 
-
+            </tbody>
+        </table>
     </div>
 </body>
 </html>

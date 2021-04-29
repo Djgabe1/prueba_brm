@@ -26,25 +26,20 @@ route.get('/products', (req, res)=>{
             
 });
 
+
 route.get('/invoice', (req, res)=>{
-    conexion.query('SELECT * FROM clientes', (error, cresultado)=>{
+    conexion.query('SELECT * FROM clientes, factura', (error, factura)=>{
         if (error) throw error;
         else {
-            res.render('invoice', {cresultado:cresultado});
+            res.render('invoice', {factura:factura});
         }
     });
-
-/* 
-    const consulta1 = ('SELECT clientes.cantidad FROM clientes');
-    const consulta2 = ('SELECT proveedores.precio FROM proveedores');
-    const resultado = consulta1 * consulta2;
-        res.render('invoice', {resultado}); */
-
 });
 
 
+
 route.get('/shopping', (req,res)=>{
-    conexion.query('SELECT * FROM proveedores', (error, pro)=>{
+    conexion.query('SELECT * FROM proveedores, clientes', (error, pro)=>{
         if (error) throw error;
         else {
             res.render('shoppingCart', {pro:pro});
@@ -52,15 +47,28 @@ route.get('/shopping', (req,res)=>{
     });
 });
 
-/* route.get('/shopping', (req, res)=>{
-    const consulta2 = ('SELECT * FROM proveedores');
-        conexion.query(consulta2, (error, resp)=>{
-                if (error) throw error;
-                res.render('shoppingCart', {proveedores: resp});
-            });
+//eliminar
 
-})
- */
+route.get('/eliminar/:id', (res, req, next)=>{
+    const id= req.body.id;
+    conexion.query('DELETE FROM `proveedores` WHERE proveedores.idProveedores= ?', [id], (error, results)=>{
+        if (error) throw error;
+        else {
+            res.send('/');
+            next();
+        }
+    });
+
+});
+
+route.get('/cancelar/:id', (res, req, next)=>{
+    const id = req.params.id
+    conexion.query('DELETE FROM clientes WHERE idCliente = ?',[id], (error, results)=>{
+            res.send('/');
+    });
+    res.render('/');
+});
+
 
 
 const crud = require('../controllers/ crud');
@@ -68,5 +76,7 @@ route.post('/save', crud.save);
 
 const clients = require('../controllers/clients');
 route.post('/guardar', clients.guardar);
+
+
 
 module.exports = route;
