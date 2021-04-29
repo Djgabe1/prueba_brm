@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include ('navbar') _%>
+        <div class="container">
+            <div class="titulo">
+                <h2>Factura</h2>
+            </div>
+            <div class="cliente">
+                <p>Cliente: </p>
+            </div>
+            <div class="productos-selecionados">
+                <p>PRODUCTOS SELECCIONADOS</p>
+                <table>
+                    <thead>
+                        <th>Cliente</th>
+                        <th>PRODUCTO</th>
+                        <th>CANTIDAD</th>
+                        <th>PRECIO</th>
+                        <th>COMPRAR</th>
+                        <th>Cancelar</th>
+                    </thead>
+                    <tbody>
+                        <% cresultado.forEach((clientes)=>{ %>
+                        <tr>    
+                                <td><%= clientes.nombre %></td>
+                                <td><%= clientes.productos %></td>
+                                <td><%= clientes.cantidad %></td>
+                                <td><%= clientes.precio%></td>
+                                <td><a href="/confirmar/<%= clientes.idProveedor %>"><i class='bx bx-check-double bx-sm'></i></a></td>
+                                <td><a href="/cancelar/<%= clientes.productos %>"><i class='bx bx-x bx-sm'></i></a></td>
+                        </tr> 
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+</body>
+</html>

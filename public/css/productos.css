@@ -1,0 +1,18 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.container{
+    display: block;
+    align-items: center;
+    justify-content: center;
+    margin: 70px 90px;
+}
+
+.input{
+    display: block;
+    width: 90%;
+    padding: 6px;
+    margin: 12px 5%;
+    box-sizing: border-box;
+    border:none;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include ('navbar') _%>
+    <div class="container">
+        <div class="titulo">
+            <h2>Carrito de compras</h2>
+        </div>
+        <div class="formulario">
+            <form action="/guardar" method="POST">
+                    <div class="items">
+                        <label for="idCliente">Numero de documento</label>
+                        <input type="text" id="idCliente" name="idCliente" class="id-cliente">
+                    </div>
+                    <div class="items">
+                        <label for="nombre">Nombres</label>
+                        <input type="text" id="nombre" name="nombre" class="nombre">
+                    </div>
+                    <div class="items">
+                        <label for="apellido">Apellidos</label>
+                        <input type="text" id="apellido" name="apellido" class="apellido">
+                    </div>
+                    <div class="items">
+                        <label for="producto">Producto</label>
+                        <select name="producto" id="producto">
+                            <option value="seleciona"> Selecciona un producto</option>
+                            <% pro.forEach(op =>{ %>
+                                <option value="<%= op.productos %>" <% pro.producto ===  op ? 'selected' : '' %>> <%= op.productos %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <div class="items">
+                        <label for="cantidad">Cantidad</label><br>
+                        <input type="text" id="cantidad" name="cantidad" >
+                        
+                    </div> 
+                    <button type="submit" class="comprar">Comprar </button>
+                    <button type="submit" class="cancelar">Cancelar </button>
+
+            </form>
+        </div>  
+
+
+    </div>
+</body>
+</html>

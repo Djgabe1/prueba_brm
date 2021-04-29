@@ -1,0 +1,31 @@
+{
+  "name": "prueba_brm",
+  "version": "1.0.0",
+  "description": "Sistema de inventariado",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve" : "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Djgabe1/prueba_brm.git"
+  },
+  "keywords": [
+    "Sistema",
+    "de",
+    "inventariado"
+  ],
+  "author": "Deissy Garcia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Djgabe1/prueba_brm/issues"
+  },
+  "homepage": "https://github.com/Djgabe1/prueba_brm#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.7"
+  }
+}
